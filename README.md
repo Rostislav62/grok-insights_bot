@@ -23,30 +23,224 @@ Grok Insights Bot is a Telegram bot that leverages seven AI APIs to analyze X po
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Rostislav62/grok-insights_bot.git
-   cd grok-insights_bot
+### for Linux
 
-2. Set up a virtual environment (recommended with pyenv):
+1. **Create a project folder**:
+   Create a folder named `grok-insights_bot` in your projects directory (e.g., `/home/<YourUsername>/Projects/grok-insights_bot`).
+   ```bash
+   cd ~/Projects
+   mkdir grok-insights_bot
+   cd grok-insights_bot
+   ```
+   Open this folder in VS Code or PyCharm:
+   - In VS Code: File → Open Folder → Select `grok-insights_bot`.
+   - In PyCharm: File → Open → Select `grok-insights_bot`.
+
+2. **Open a terminal**:
+   - In VS Code: Click "Terminal" → "New Terminal" (or press `Ctrl+``).
+   - In PyCharm: Click "Terminal" at the bottom of the window.
+
+3. **Install system dependencies**:
+   Install tools and libraries needed for Python:
+   ```bash
+   sudo apt update
+   sudo apt install -y build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev \
+   libreadline-dev libsqlite3-dev wget curl llvm libncurses-dev xz-utils tk-dev \
+   libxml2-dev libxmlsec1-dev liblzma-dev git
+   ```
+
+4. **Install `pyenv`**:
+   Install `pyenv` to manage Python versions:
+   ```bash
+   curl https://pyenv.run | bash
+   ```
+   Add `pyenv` to your shell configuration:
+   ```bash
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+   echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+   echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+   echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+   echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+   source ~/.bashrc
+   ```
+
+5. **Install Python 3.8.10**:
    ```bash
    pyenv install 3.8.10
+   ```
+
+6. **Set up a virtual environment**:
+   Create and activate a virtual environment:
+   ```bash
    pyenv virtualenv 3.8.10 grok-insights-bot
    pyenv local grok-insights-bot
-
-3. Install dependencies:
+   ```
+   Verify Python version:
    ```bash
+   python --version
+   ```
+   Should output `Python 3.8.10`.
+
+7. **Clone the repository**:
+   *This step is identical for Linux and Windows.*
+   ```bash
+   git clone https://github.com/Rostislav62/grok-insights_bot.git .
+   ```
+
+8. **Install dependencies**:
+   *This step is identical for Linux and Windows.*
+   ```bash
+   python -m pip install --upgrade pip
    python -m pip install -r requirements.txt
+   ```
 
-4. Configure API keys in config.py (see WTF).
+9. **Configure API keys**:
+   *This step is identical for Linux and Windows.*
+   Open `config.py` in VS Code or PyCharm and add your API keys:
+   ```python
+   TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+   XAI_API_KEY = "YOUR_XAI_API_KEY"
+   OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
+   HUGGINGFACE_API_KEY = "YOUR_HUGGINGFACE_API_KEY"
+   UCLASSIFY_API_KEY = "YOUR_UCLASSIFY_API_KEY"
+   TEXTRAZOR_API_KEY = "YOUR_TEXTRAZOR_API_KEY"
+   MONKEYLEARN_API_KEY = "YOUR_MONKEYLEARN_API_KEY"
+   WATSON_API_KEY = "YOUR_WATSON_API_KEY"
+   ```
+   Obtain keys from:
+   - Telegram: Create a bot via `@BotFather`.
+   - xAI: [x.ai/api](https://x.ai/api).
+   - OpenAI: [platform.openai.com](https://platform.openai.com).
+   - Hugging Face: [huggingface.co](https://huggingface.co).
+   - uClassify: [uclassify.com](https://uclassify.com).
+   - TextRazor: [textrazor.com](https://textrazor.com).
+   - MonkeyLearn: [monkeylearn.com](https://monkeylearn.com).
+   - Watson: [cloud.ibm.com](https://cloud.ibm.com).
 
-5. Initialize the database:
+10. **Initialize the database**:
+    *This step is identical for Linux and Windows.*
+    ```bash
+    python create_db.py
+    ```
+    Verify that `insights.db` is created:
+    ```bash
+    ls insights.db
+    ```
+
+11. **Run the bot**:
+    *This step is identical for Linux and Windows.*
+    ```bash
+    python main.py
+    ```
+
+12. **Test the bot**:
+    *This step is identical for Linux and Windows.*
+    - Open Telegram, find your bot (e.g., `@grok_insights_bot`).
+    - Send commands: `/start`, `/select_service`, `/analyze AI`.
+    - Check responses and verify data in `insights.db`.
+
+### for Windows
+
+1. **Create a project folder**:
+   Create a folder named `grok-insights_bot` in your projects directory (e.g., `C:\Users\<YourUsername>\Projects\grok-insights_bot`).
+   Open this folder in VS Code or PyCharm:
+   - In VS Code: File → Open Folder → Select `grok-insights_bot`.
+   - In PyCharm: File → Open → Select `grok-insights_bot`.
+
+2. **Open a terminal**:
+   - In VS Code: Click "Terminal" → "New Terminal" (or press `Ctrl+``).
+   - In PyCharm: Click "Terminal" at the bottom of the window.
+
+3. **Install Python 3.8**:
+   - Download Python 3.8.5 from [python.org](https://www.python.org/downloads/release/python-385/) (select "Windows x86-64 executable installer").
+   - Run the installer:
+     - Check "Add Python 3.8 to PATH".
+     - Select "Customize installation" and ensure "pip" and "Install for all users" are selected.
+     - Install to a default path (e.g., `C:\Python38`).
+   - Verify in the terminal:
+     ```bash
+     python --version
+     ```
+     Should output `Python 3.8.5`.
+
+4. **Install Git**:
+   - Download and install Git from [git-scm.com](https://git-scm.com/download/win).
+   - During installation, select default options (e.g., "Use Git from the Windows Command Prompt").
+   - Verify in the terminal:
+     ```bash
+     git --version
+     ```
+
+5. **Set up a virtual environment**:
+   Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+   Your terminal prompt should change to `(venv)`.
+   Verify Python version:
+   ```bash
+   python --version
+   ```
+   Should output `Python 3.8.5`.
+
+6. **Clone the repository**:
+   *This step is identical for Linux and Windows.*
+   ```bash
+   git clone https://github.com/Rostislav62/grok-insights_bot.git .
+   ```
+
+7. **Install dependencies**:
+   *This step is identical for Linux and Windows.*
+   ```bash
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+   ```
+
+8. **Configure API keys**:
+   *This step is identical for Linux and Windows.*
+   Open `config.py` in VS Code or PyCharm and add your API keys:
+   ```python
+   TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+   XAI_API_KEY = "YOUR_XAI_API_KEY"
+   OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
+   HUGGINGFACE_API_KEY = "YOUR_HUGGINGFACE_API_KEY"
+   UCLASSIFY_API_KEY = "YOUR_UCLASSIFY_API_KEY"
+   TEXTRAZOR_API_KEY = "YOUR_TEXTRAZOR_API_KEY"
+   MONKEYLEARN_API_KEY = "YOUR_MONKEYLEARN_API_KEY"
+   WATSON_API_KEY = "YOUR_WATSON_API_KEY"
+   ```
+   Obtain keys from:
+   - Telegram: Create a bot via `@BotFather`.
+   - xAI: [x.ai/api](https://x.ai/api).
+   - OpenAI: [platform.openai.com](https://platform.openai.com).
+   - Hugging Face: [huggingface.co](https://huggingface.co).
+   - uClassify: [uclassify.com](https://uclassify.com).
+   - TextRazor: [textrazor.com](https://textrazor.com).
+   - MonkeyLearn: [monkeylearn.com](https://monkeylearn.com).
+   - Watson: [cloud.ibm.com](https://cloud.ibm.com).
+
+9. **Initialize the database**:
+   *This step is identical for Linux and Windows.*
    ```bash
    python create_db.py
-
-6. Run the bot:
+   ```
+   Verify that `insights.db` is created:
    ```bash
-   python main.py
+   dir insights.db
+   ```
+
+10. **Run the bot**:
+    *This step is identical for Linux and Windows.*
+    ```bash
+    python main.py
+    ```
+
+11. **Test the bot**:
+    *This step is identical for Linux and Windows.*
+    - Open Telegram, find your bot (e.g., `@grok_insights_bot`).
+    - Send commands: `/start`, `/select_service`, `/analyze AI`.
+    - Check responses and verify data in `insights.db`.
 
 
 ## How to Work with the Bot
