@@ -21,6 +21,34 @@ Grok Insights Bot is a Telegram bot that leverages seven AI APIs to analyze X po
 - **Localization**: Supports Russian and English languages.
 - **Modular Design**: Separate service modules for easy extensibility.
 
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Rostislav62/grok-insights_bot.git
+   cd grok-insights_bot
+
+2. Set up a virtual environment (recommended with pyenv):
+   ```bash
+   pyenv install 3.8.10
+   pyenv virtualenv 3.8.10 grok-insights-bot
+   pyenv local grok-insights-bot
+
+3. Install dependencies:
+   ```bash
+   python -m pip install -r requirements.txt
+
+4. Configure API keys in config.py (see WTF).
+
+5. Initialize the database:
+   ```bash
+   python create_db.py
+
+6. Run the bot:
+   ```bash
+   python main.py
+
+
 ## How to Work with the Bot
 
 ### Start the Bot in Telegram
